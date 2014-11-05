@@ -15,6 +15,7 @@ RUN pip install ansible
 RUN mkdir /etc/ansible
  
 #Copy hosts to ansible directory
+#Change these to appropriate hosts for the systems you want to ansiblize
 RUN echo \
 	"[DEV] \n 172.18.28.25 \n 172.18.28.26 \n 172.18.28.27 \n 172.18.28.28 \n \n [UAT] \n 172.18.27.21 \n 172.18.27.22 \n 172.18.27.23" > /etc/ansible/hosts
  
@@ -37,7 +38,6 @@ RUN \
 	locale-gen en_US.UTF-8 && sudo dpkg-reconfigure locales
  
 # add a shared ubuntu user
- 
 RUN useradd -m -s /bin/bash -d /home/ubuntu ubuntu
 RUN echo "# User rules for ubuntu\nubuntu ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-cloud-init-users
  
